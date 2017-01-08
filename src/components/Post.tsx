@@ -45,7 +45,6 @@ async function loadPost(postId: string | string[]) {
   return await res.json()
 }
 
-
 Post.getInitialProps = async ({ query, req }) => {
   if (!req) return { post: null }
   const post = await loadPost(query.id);
