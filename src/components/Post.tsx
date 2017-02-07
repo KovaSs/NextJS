@@ -1,14 +1,13 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { NextPageContext } from 'next'
 import { MainLayout } from '@layouts'
 
+import * as Types from './types.d'
+
 interface Props {
-  post: {
-    id: number;
-    title: string;
-    body: string;
-  }
+  post: Types.Post
 }
 
 export function Post({ post: serverPost }: Props) {
@@ -41,12 +40,19 @@ export function Post({ post: serverPost }: Props) {
 }
 
 async function loadPost(postId: string | string[]) {
-  const res = await fetch(`http://localhost:4200/posts/${postId}`)
+  const res = await fetch(`${process.env.API_URL}/posts/${postId}`)
   return await res.json()
 }
 
-Post.getInitialProps = async ({ query, req }) => {
+
+interface PostNextPageContext extends NextPageContext {
+  query: {
+    id: string;
+  };
+}
+
+Post.getInitialProps = async ({ query, req }: PostNextPageContext) => {
   if (!req) return { post: null }
-  const post = await loadPost(query.id);
+  const post: Types.Post = await loadPost(query.id);
   return { post }
 }
