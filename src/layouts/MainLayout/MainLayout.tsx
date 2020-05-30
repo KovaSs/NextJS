@@ -4,7 +4,6 @@ import Link from 'next/link'
 import styles from './style.module.css'
 
 interface Props {
-  className?: string;
   head?: {
     title?: string;
     keywords?: string;
@@ -18,7 +17,7 @@ export const defaulHeadtMeta = {
   description: 'This is my first NextJS App',
 }
 
-export function MainLayout({ className, children, head }: React.PropsWithChildren<Props>) {
+export function MainLayout({ head, children }: React.PropsWithChildren<Props>) {
   const meta = { ...defaulHeadtMeta, ...head }
 
   return (

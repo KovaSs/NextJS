@@ -17,11 +17,12 @@ export function Post({ post: serverPost }: Props) {
   const [post, setPost] = useState(serverPost)
 
   useEffect(() => {
+    if (!serverPost) frontLoadPost()
+
     async function frontLoadPost() {
       const frontPost = await loadPost(query.id)
       setPost(frontPost);
     }
-    if (!serverPost) frontLoadPost()
   }, [])
 
   if (!post) return (

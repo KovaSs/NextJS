@@ -1,19 +1,19 @@
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-// import { useState, useEffect } from 'react'
+
 import { MainLayout } from '@layouts'
 
-export function Posts({ posts }) {
-  // const [posts, setPosts] = useState([])
+export function Posts({ posts: serverPosts }) {
+  const [posts, setPosts] = useState(serverPosts)
 
-  // useEffect(() => {
-  //   loadPosts()
-  // }, [])
+  useEffect(() => {
+    if (!serverPosts) frontLoadPost()
 
-  // async function loadPosts() {
-  //   const res = await fetch('http://localhost:4200/posts')
-  //   const json = await res.json()
-  //   setPosts(json)
-  // }
+    async function frontLoadPost() {
+      const frontPosts = await loadPosts()
+      setPosts(frontPosts);
+    }
+  }, [])
 
   function renderPosts() {
     return posts.map(post => (
@@ -25,6 +25,12 @@ export function Posts({ posts }) {
     ))
   }
 
+  if (!posts) return (
+    <MainLayout>
+      <h2>Loading...</h2>
+    </MainLayout>
+  )
+
   return (
     <MainLayout>
       <h1>Posts page</h1>
@@ -33,8 +39,13 @@ export function Posts({ posts }) {
   );
 }
 
-Posts.getInitialProps = async () => {
+async function loadPosts() {
   const res = await fetch('http://localhost:4200/posts')
-  const posts = await res.json()
+  return await res.json()
+}
+
+Posts.getInitialProps = async ({ req }) => {
+  if (!req) return { posts: null }
+  const posts = await loadPosts()
   return { posts }
 }
