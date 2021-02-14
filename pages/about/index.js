@@ -1,6 +1,6 @@
 import Router from 'next/router'
 
-import { MainLayout } from '../../components/MainLayout'
+import { MainLayout } from '@layouts'
 
 export default function About() {
   function goTo(url) {

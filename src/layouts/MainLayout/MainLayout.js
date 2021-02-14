@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
-import styles from '../styles/Home.module.css'
+import styles from './style.module.css'
 
 export const defaulHeadtMeta = {
   title: 'NextJS App',
@@ -20,7 +21,11 @@ export function MainLayout({ className, children, head }) {
         <meta name="description" content={meta.description} />
       </Head>
       <div className={styles.container}>
-        <nav><h1>Navigation</h1></nav>
+        <nav>
+          <h1>Navigation</h1>
+          <Link href="/posts"><a>Posts</a></Link>
+          <Link href="/about"><a>About</a></Link>
+        </nav>
         <main>{children}</main>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-import { MainLayout } from '../../components/MainLayout'
+import { MainLayout } from '@layouts'
 
 export default function Post() {
   const { query } = useRouter()
