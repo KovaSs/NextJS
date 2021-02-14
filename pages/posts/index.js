@@ -1,14 +1,10 @@
-import Head from 'next/head'
+import { MainLayout } from '../../components/MainLayout'
 
 // Get page - /posts
 export default function Posts() {
   return (
-    <>
-      <Head>
-          <title>NextJS App | Posts</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+    <MainLayout>
       <h1>Posts page</h1>
-    </>
+    </MainLayout>
   );
 }
