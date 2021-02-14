@@ -6,8 +6,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>My first NextJS application</title>
+        <title>NextJS App</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="keywords" content="nodejs,nextjs,react,js" />
+        <meta name="description" content="This is my first NextJS App" />
       </Head>
 
       <main className={styles.main}>
