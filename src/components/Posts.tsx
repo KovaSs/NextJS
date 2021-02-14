@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import Link from 'next/link'
+// import { useState, useEffect } from 'react'
 import { MainLayout } from '@layouts'
 
-export default function Posts({ posts }) {
+export function Posts({ posts }) {
   // const [posts, setPosts] = useState([])
 
   // useEffect(() => {
@@ -15,7 +16,13 @@ export default function Posts({ posts }) {
   // }
 
   function renderPosts() {
-    return posts.map(post => <li key={post.id}>{post.title}</li>)
+    return posts.map(post => (
+      <li key={post.id}>
+        <Link href="/posts/[id]" as={`/posts/${post.id}`}>
+          <a>{post.title}</a>
+        </Link>
+      </li>
+    ))
   }
 
   return (
