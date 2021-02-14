@@ -1,4 +1,4 @@
-import { MainLayout } from '../../components/MainLayout'
+import { MainLayout } from '@layouts'
 
 // Get page - /posts
 export default function Posts() {

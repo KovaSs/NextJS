@@ -1,7 +1,7 @@
 
 import Link from 'next/link'
 
-import { MainLayout } from '../components/MainLayout'
+import { MainLayout } from '@layouts'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
