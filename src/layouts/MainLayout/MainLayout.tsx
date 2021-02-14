@@ -30,8 +30,7 @@ export function MainLayout({ className, children, head }: React.PropsWithChildre
         <meta name="description" content={meta.description} />
       </Head>
       <div className={styles.container}>
-        <nav>
-          <h1>Navigation</h1>
+        <nav className ={styles.navbar}>
           <Link href="/"><a>Home</a></Link>
           <Link href="/posts"><a>Posts</a></Link>
           <Link href="/about"><a>About</a></Link>
