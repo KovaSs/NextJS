@@ -23,6 +23,7 @@ export function MainLayout({ className, children, head }) {
       <div className={styles.container}>
         <nav>
           <h1>Navigation</h1>
+          <Link href="/"><a>Home</a></Link>
           <Link href="/posts"><a>Posts</a></Link>
           <Link href="/about"><a>About</a></Link>
         </nav>
