@@ -3,13 +3,22 @@ import Link from 'next/link'
 
 import styles from './style.module.css'
 
+interface Props {
+  className?: string;
+  head?: {
+    title?: string;
+    keywords?: string;
+    description?: string;
+  };
+}
+
 export const defaulHeadtMeta = {
   title: 'NextJS App',
   keywords: 'nodejs,nextjs,react,js',
   description: 'This is my first NextJS App',
 }
 
-export function MainLayout({ className, children, head }) {
+export function MainLayout({ className, children, head }: React.PropsWithChildren<Props>) {
   const meta = { ...defaulHeadtMeta, ...head }
 
   return (
